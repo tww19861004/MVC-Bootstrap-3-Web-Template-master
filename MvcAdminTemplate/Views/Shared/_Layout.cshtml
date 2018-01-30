@@ -27,7 +27,7 @@
                     <div class="collapse navbar-collapse bootstrap-admin-navbar-sm">
                         <ul class="nav navbar-nav navbar-right ">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-hover="dropdown">数据库实体类 <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown">生成数据库脚本 <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     <li role="presentation" class="dropdown-header">非关系型数据库</li>
                                     <li><a href="#">SQLite</a></li>
@@ -46,8 +46,12 @@
                             <li>
                                 <a href="#">Protobuf-net <i class="glyphicon glyphicon-cog"></i></a>
                             </li>
-                            <li>
-                                <a href="#">常用功能 <i class="glyphicon glyphicon-share-alt"></i></a>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-hover="dropdown">常用功能 <b class="caret"></b></a>
+                                <ul class="dropdown-menu">                                    
+                                    <li><a href="#">在线URL转PDF</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                </ul>
                             </li>
                             @Html.Partial("_LoginPartial")
                         </ul>
