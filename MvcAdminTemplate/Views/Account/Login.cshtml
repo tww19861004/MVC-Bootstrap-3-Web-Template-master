@@ -1,45 +1,46 @@
 ﻿@{
-    ViewBag.Title = "Signup Page";
-    Layout = "~/Views/Shared/_Landing.cshtml";
+    ViewBag.Title = "Login";
 }
-
-<div class="row">
-    <div class="alert alert-info">
-        <a class="close" data-dismiss="alert" href="#">&times;</a>
-        Press enter key or click the Submit button
+@Styles.Render("~/Content/Vendors")
+@*@Html.Partial("_LeftMenu")*@
+<!-- content -->
+<div class="col-md-12">
+    <div class="row">
+        <div class="panel panel-default bootstrap-admin-no-table-panel">
+            <div class="bootstrap-admin-no-table-panel-content bootstrap-admin-panel-content collapse in">
+                <form class="form-horizontal">
+                    <fieldset>
+                        <legend>立即登录，尽情享受我们的云服务吧</legend>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="focusedInput">*用户名：</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="txtUserName" name="txtUserName" placeholder="请输入用户名" valid="required|regexp" regexp="^[a-zA-Z0-9_]{3,16}$" errmsg="必填！|必须为3~16位长度的数字、字母、下划线组合！" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="focusedInput">*密码：</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" id="txtPwd" name="txtPwd" placeholder="请输入密码" valid="required|regexp" regexp="^[a-zA-Z0-9_]{3,16}$" errmsg="必填！|必须为3~16位长度的数字、字母、下划线组合！" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="focusedInput"></label>
+                            <div class="col-lg-10">
+                                <button type="submit" class="btn btn-primary">登陆</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label" for="focusedInput"></label>
+                            <div class="col-lg-10">
+                                <a href="@Url.Action("Register", "Account")">还没账号？免费注册吧！</a>
+                                <a href="javascript:void(0);" id="qqLoginBtn">
+                                    <img src="~/img/qqlogin.png" />
+                                </a>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
     </div>
-    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "bootstrap-admin-login-form" }))
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-
-        <h1>Login</h1>
-        <div class="form-group">
-            <input class="form-control" type="text" name="UserName" placeholder="UserName">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="Password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <label>
-                <input type="checkbox" name="remember_me">
-                Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary" type="submit">Submit</button>
-    }
 </div>
-
-@section scripts
-{
-    <script type="text/javascript">
-        $(function () {
-            // Setting focus
-            $('input[name="UserName"]').focus();
-            // Setting width of the alert box
-            var formWidth = $('.bootstrap-admin-login-form').innerWidth();
-            var alertPadding = parseInt($('.alert').css('padding'));
-            $('.alert').width(formWidth - 2 * alertPadding);
-        });
-    </script>
-}

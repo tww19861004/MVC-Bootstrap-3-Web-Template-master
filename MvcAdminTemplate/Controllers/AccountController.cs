@@ -1,24 +1,34 @@
-﻿using System;
+﻿using MvcAdminTemplate.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Data.Entity.Validation;
-using System.Security.Claims;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using MvcAdminTemplate.Models;
 
 namespace MvcAdminTemplate.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
+        //
         // GET: /Account/Login
         [AllowAnonymous]
-        public ActionResult Login(string returnUrl)
+        public ActionResult Login()
         {
-            ViewBag.ReturnUrl = returnUrl;
             return View();
+        }
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public void RegisterSubmit(FormCollection form)
+        {
+
         }
 
         //
@@ -39,13 +49,6 @@ namespace MvcAdminTemplate.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))
@@ -57,6 +60,6 @@ namespace MvcAdminTemplate.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
-      
-      }
+
+    }
 }
